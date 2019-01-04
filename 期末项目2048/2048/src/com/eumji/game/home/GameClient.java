@@ -1,5 +1,3 @@
-package com.eumji.game.home;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -15,49 +13,49 @@ public class GameClient extends JFrame {
 	int[][] gameInfo = new int[4][4];
 	public GameClient() {
 		
-		this.setTitle("·ğÏµÂëÅ©");		//±êÌâ
-		this.setLocation(450, 180);		//¿ªÊ¼Î»ÖÃ
-		this.setSize(400, 520);			 //´óĞ¡
-		this.setLayout(null);			//ÉèÖÃ¾ø¶Ô²¼¾Ö
-		//¿ªÊ¼°´Å¥ÉèÖÃ
+		this.setTitle("ä½›ç³»ç å†œ");		//æ ‡é¢˜
+		this.setLocation(450, 180);		//å¼€å§‹ä½ç½®
+		this.setSize(400, 520);			 //å¤§å°
+		this.setLayout(null);			//è®¾ç½®ç»å¯¹å¸ƒå±€
+		//å¼€å§‹æŒ‰é’®è®¾ç½®
 		ImageIcon startIcon = new ImageIcon("res/begin.png");
 		JButton start = new JButton(startIcon);
 		start.setFocusable(false);
 		start.setFocusPainted(false);
-		start.setContentAreaFilled(false);//Ïû³ı±³¾°ÑÕÉ«
-		start.setBorderPainted(false);	//È¡Ïû±ß¿ò
+		start.setContentAreaFilled(false);//æ¶ˆé™¤èƒŒæ™¯é¢œè‰²
+		start.setBorderPainted(false);	//å–æ¶ˆè¾¹æ¡†
 		start.setBounds(5, 10, 120, 30);
-		this.add(start);	//Ìí¼Ó¿ªÊ¼°´Å¥
-		//¹ØÓÚ°´Å¥ÉèÖÃ
+		this.add(start);	//æ·»åŠ å¼€å§‹æŒ‰é’®
+		//å…³äºæŒ‰é’®è®¾ç½®
 		ImageIcon aboutIcon = new ImageIcon("res/help.png");
 		JButton about = new JButton(aboutIcon);
 		about.setFocusable(false);
 		about.setFocusPainted(false);
-		about.setContentAreaFilled(false);//Ïû³ı±³¾°ÑÕÉ«
-		about.setBorderPainted(false);	//È¡Ïû±ß¿ò
+		about.setContentAreaFilled(false);//æ¶ˆé™¤èƒŒæ™¯é¢œè‰²
+		about.setBorderPainted(false);	//å–æ¶ˆè¾¹æ¡†
 		about.setBounds(160, 10, 98, 30);
 		this.add(about);
-		//»ØÍË°´Å¥ÉèÖÃ
+		//å›é€€æŒ‰é’®è®¾ç½®
 		ImageIcon backIcon = new ImageIcon("res/back.png");
 		JButton back = new JButton(backIcon);
 		back.setBounds(270, 10, 120, 30);
 		back.setFocusable(false);
 		back.setFocusPainted(false);
-		back.setContentAreaFilled(false);//Ïû³ı±³¾°ÑÕÉ«
-		back.setBorderPainted(false);	//È¡Ïû±ß¿ò
+		back.setContentAreaFilled(false);//æ¶ˆé™¤èƒŒæ™¯é¢œè‰²
+		back.setBorderPainted(false);	//å–æ¶ˆè¾¹æ¡†
 		this.add(back);
 		
-		//ÓÎÏ··ÖÊıÏÔÊ¾
-		JLabel score = new JLabel("µÃ·Ö : 0");
+		//æ¸¸æˆåˆ†æ•°æ˜¾ç¤º
+		JLabel score = new JLabel("å¾—åˆ† : 0");
 		score.setBounds(40, 45, 120, 50);
-		score.setFont(new Font("¿¬Ìå", Font.CENTER_BASELINE, 18));//ÉèÖÃ×ÖÌåÊôĞÔ
+		score.setFont(new Font("æ¥·ä½“", Font.CENTER_BASELINE, 18));//è®¾ç½®å­—ä½“å±æ€§
 		score.setForeground(new Color(0x000000));
 		this.add(score);
 		
-		//ÉèÖÃÊÇ·ñ¿ªÆôÓÎÏ·ÒôĞ§
-		JCheckBox voiceCheck = new JCheckBox("¹Ø±ÕÒôÀÖ");
+		//è®¾ç½®æ˜¯å¦å¼€å¯æ¸¸æˆéŸ³æ•ˆ
+		JCheckBox voiceCheck = new JCheckBox("å…³é—­éŸ³ä¹");
 		voiceCheck.setBounds(290, 45, 120, 50);
-		voiceCheck.setFont(new Font("¿¬Ìå", Font.CENTER_BASELINE, 18));
+		voiceCheck.setFont(new Font("æ¥·ä½“", Font.CENTER_BASELINE, 18));
 		voiceCheck.setFocusable(false);
 		voiceCheck.setBorderPainted(false);
 		voiceCheck.setFocusPainted(false);
@@ -66,17 +64,17 @@ public class GameClient extends JFrame {
 		
 	
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setResizable(false);	//ÎŞ·¨×î´ó»¯
-		this.setVisible(true);	//¿É¼û
+		this.setResizable(false);	//æ— æ³•æœ€å¤§åŒ–
+		this.setVisible(true);	//å¯è§
 		
-		//ÉèÖÃ¼àÌı
+		//è®¾ç½®ç›‘å¬
 		GameListener listener = new GameListener(this,gameInfo,start,about,back,voiceCheck,score);
-		//Ìí¼Ó°´Å¥µÄµã»÷¼àÌı
+		//æ·»åŠ æŒ‰é’®çš„ç‚¹å‡»ç›‘å¬
 		start.addActionListener(listener);
 		about.addActionListener(listener);
 		back.addActionListener(listener);
 		voiceCheck.addActionListener(listener);
-		//Ìí¼Ó°´¼ü¼àÌı
+		//æ·»åŠ æŒ‰é”®ç›‘å¬
 		this.addKeyListener(listener);
 		
 	}
@@ -84,10 +82,10 @@ public class GameClient extends JFrame {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		//×îÍâ²ã´ó¸ñ×Ó
+		//æœ€å¤–å±‚å¤§æ ¼å­
 		g.setColor(new Color(0xB8AAAA));
 		g.fillRoundRect(15, 130, 370, 370, 15, 15);
-		//Àï²ãµÄÃ¿¸öĞ¡¸ñ×Ó
+		//é‡Œå±‚çš„æ¯ä¸ªå°æ ¼å­
 		g.setColor(new Color(0xD4C8BA));
 		for (int i = 0; i < gameInfo.length ; i++) {
 			for (int j = 0; j < gameInfo[0].length; j++) {
@@ -95,7 +93,7 @@ public class GameClient extends JFrame {
 			}		
 		}
 	
-		//ÉèÖÃÊı×éÖĞµÄ¸÷¸öÖµµÃ×´Ì¬
+		//è®¾ç½®æ•°ç»„ä¸­çš„å„ä¸ªå€¼å¾—çŠ¶æ€
 		for (int i = 0; i < gameInfo[0].length ; i++) {
 			for (int j = 0; j < gameInfo.length; j++) {
 				if(gameInfo[j][i]!=0){
@@ -151,7 +149,7 @@ public class GameClient extends JFrame {
 			
 					g.fillRoundRect(25+i*90, 140+j*90, 80, 80, 15, 15);
 					g.setColor(new Color(0x000000));
-					g.setFont(new Font("¿¬Ìå", Font.PLAIN, 28));
+					g.setFont(new Font("æ¥·ä½“", Font.PLAIN, 28));
 					g.drawString(gameInfo[j][i]+"", 25+i*90+30,140+j*90+50);
 					
 				}
