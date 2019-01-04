@@ -1,5 +1,3 @@
-package com.eumji.game.utils;
-
 import java.io.File;
 import java.io.IOException;
 
