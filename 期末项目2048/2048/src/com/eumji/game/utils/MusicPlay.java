@@ -1,4 +1,4 @@
-package com.eumji.game.utils;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -15,43 +15,43 @@ import javax.sound.sampled.DataLine.Info;
 public class MusicPlay{
 	public static void play(String fileName){
 		File soundFile = new File(fileName);
-		AudioInputStream ais = null;	//ÒôÆµÊäÈëÁ÷
+		AudioInputStream ais = null;	//éŸ³é¢‘è¾“å…¥æµ
 		try {
-			//Í¨¹ıaudiosystem»ñÈ¡ÒôÆµÊäÈëÁ÷£¬»¹¿ÉÒÔ×ª»»²»Í¬ÒôÆµ¸ñÊ½
-			//getaudioinputstream ´ÓfileÖĞ¹ıÈ¥ÒôÆµÊäÈëÁ÷
+			//é€šè¿‡audiosystemè·å–éŸ³é¢‘è¾“å…¥æµï¼Œè¿˜å¯ä»¥è½¬æ¢ä¸åŒéŸ³é¢‘æ ¼å¼
+			//getaudioinputstream ä»fileä¸­è¿‡å»éŸ³é¢‘è¾“å…¥æµ
 			ais = AudioSystem.getAudioInputStream(soundFile);
 		} catch (UnsupportedAudioFileException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
-		//»ñÈ¡ÒôÆµÊäÈëÁ÷ÖĞµÄÒôÆµ¸ñÊ½
+		//è·å–éŸ³é¢‘è¾“å…¥æµä¸­çš„éŸ³é¢‘æ ¼å¼
 		AudioFormat format = ais.getFormat();
-		//Êı¾İĞĞÊÇ¿ÉÒÔĞ´ÈëÊı¾İµÄÊı¾İĞĞ£¬³äµ±»ìÆµÆ÷µÄÔ´
+		//æ•°æ®è¡Œæ˜¯å¯ä»¥å†™å…¥æ•°æ®çš„æ•°æ®è¡Œï¼Œå……å½“æ··é¢‘å™¨çš„æº
 		SourceDataLine auLine=null;
-		//»ñÈ¡Êı¾İĞĞÖ§³ÖµÄÒôÆµ¸ñÊ½µÄ¶ÔÏó
+		//è·å–æ•°æ®è¡Œæ”¯æŒçš„éŸ³é¢‘æ ¼å¼çš„å¯¹è±¡
 		Info info = new DataLine.Info(SourceDataLine.class, format);
 		
 		try {
-			//»ñÈ¡ºÍinfo¶ÔÏóÖĞµÄÃèÊöÆ¥ÅäµÄĞĞ
+			//è·å–å’Œinfoå¯¹è±¡ä¸­çš„æè¿°åŒ¹é…çš„è¡Œ
 			auLine = (SourceDataLine) AudioSystem.getLine(info);
-			//´ò¿ª¾ßÓĞÖ¸¶¨¸ñÊ½ºÍ½¨Òé»º³åÇø´óĞ¡µÄĞĞ¡£»ñµÃËùÓĞÏµÍ³ËùĞè×ÊÔ´²¢¿ÉÒÔ²Ù×÷
+			//æ‰“å¼€å…·æœ‰æŒ‡å®šæ ¼å¼å’Œå»ºè®®ç¼“å†²åŒºå¤§å°çš„è¡Œã€‚è·å¾—æ‰€æœ‰ç³»ç»Ÿæ‰€éœ€èµ„æºå¹¶å¯ä»¥æ“ä½œ
 			auLine.open();
 		} catch (LineUnavailableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return;
 		}
-		//ĞèÒªÄ³Ò»Êı¾İĞĞÖ´ĞĞµÄÊı¾İI/O
+		//éœ€è¦æŸä¸€æ•°æ®è¡Œæ‰§è¡Œçš„æ•°æ®I/O
 		auLine.start();
 		int read = 0;
 		byte[] buf = new byte[1024];
 		while (read != -1){
 			try {
-				//¶ÁÈ¡ÎÄ¼ş
+				//è¯»å–æ–‡ä»¶
 				read = ais.read(buf, 0, buf.length);
 				if (read >= 0) {
-					//½«ÒôÆµĞ´Èë»ìÆµÆ÷
+					//å°†éŸ³é¢‘å†™å…¥æ··é¢‘å™¨
 					auLine.write(buf, 0, buf.length);
 					
 				}
@@ -60,7 +60,7 @@ public class MusicPlay{
 				e.printStackTrace();
 				return;
 			}finally {
-				//¹Ø±Õ²Ù×÷
+				//å…³é—­æ“ä½œ
 				auLine.drain();
 				auLine.close();
 			}
