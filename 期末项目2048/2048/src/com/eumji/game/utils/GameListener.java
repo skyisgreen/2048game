@@ -1,5 +1,3 @@
-package com.eumji.game.utils;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -15,21 +13,21 @@ import com.eumji.game.home.GameClient;
 
 public class GameListener extends KeyAdapter implements ActionListener {
 	private boolean hasMove = false;
-	private GameClient client;	//¿Í»§¶Ë
-	private int[][] gameInfo;	//¼ÇÂ¼ÓÎÏ·Êı¾İµÄÊı×é
-	private Random random = new Random();	//Ëæ»úÊı¶ÔÏó Ëæ»úÉú³É³öÏÖµÄÊı×Ö
-	private int backUp[][] = new int[4][4];	//»ØÍËµÄÊı¾İÊı×é
-	private int saveOnce[][] = new int[4][4];	//¸´»îµÄÊı×é
-	public JLabel ScoreJLabel;	//·ÖÊıÃæ°å
-	int score;	//·ÖÊı
-	int backScore;	//±¸·İ·ÖÊı
-	public JCheckBox voiceCheck;	//¾²Òô
-	public JButton newGame;	//ĞÂÓÎÏ·°´Å¥
-	public JButton about;	//¹ØÓÚ°´Å¥
-	public JButton back;	//»ØÍËÒ»²½°´Å¥
-	private boolean hasWin=false;	//ÊÇ·ñÒÑ¾­Ê¤Àû
-	private boolean hasBack = false;	//ÊÇ·ñÒÑ¾­»ØÍË
-	private boolean hasSound = false;	//ÊÇ·ñÓĞÉùÒô
+	private GameClient client;	//å®¢æˆ·ç«¯
+	private int[][] gameInfo;	//è®°å½•æ¸¸æˆæ•°æ®çš„æ•°ç»„
+	private Random random = new Random();	//éšæœºæ•°å¯¹è±¡ éšæœºç”Ÿæˆå‡ºç°çš„æ•°å­—
+	private int backUp[][] = new int[4][4];	//å›é€€çš„æ•°æ®æ•°ç»„
+	private int saveOnce[][] = new int[4][4];	//å¤æ´»çš„æ•°ç»„
+	public JLabel ScoreJLabel;	//åˆ†æ•°é¢æ¿
+	int score;	//åˆ†æ•°
+	int backScore;	//å¤‡ä»½åˆ†æ•°
+	public JCheckBox voiceCheck;	//é™éŸ³
+	public JButton newGame;	//æ–°æ¸¸æˆæŒ‰é’®
+	public JButton about;	//å…³äºæŒ‰é’®
+	public JButton back;	//å›é€€ä¸€æ­¥æŒ‰é’®
+	private boolean hasWin=false;	//æ˜¯å¦å·²ç»èƒœåˆ©
+	private boolean hasBack = false;	//æ˜¯å¦å·²ç»å›é€€
+	private boolean hasSound = false;	//æ˜¯å¦æœ‰å£°éŸ³
 	
 	
 	
@@ -44,12 +42,12 @@ public class GameListener extends KeyAdapter implements ActionListener {
 		this.voiceCheck = voiceCheck;
 	
 	}
-	//·¢Éúµã»÷ÊÂ¼şÊ±µ÷ÓÃ µÄ·½·¨
+	//å‘ç”Ÿç‚¹å‡»äº‹ä»¶æ—¶è°ƒç”¨ çš„æ–¹æ³•
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == newGame) {
 			hasWin = false;
-			//³õÊ¼»¯ÓÎÏ·ĞÅÏ¢
+			//åˆå§‹åŒ–æ¸¸æˆä¿¡æ¯
 			for (int i = 0; i < gameInfo.length; i++) {
 				for (int j = 0; j < gameInfo[0].length; j++) {
 					gameInfo[i][j] = 0;
@@ -57,8 +55,8 @@ public class GameListener extends KeyAdapter implements ActionListener {
 			}
 				
 			score = 0;
-			ScoreJLabel.setText("ÓÎÏ··ÖÊı£º "+score);
-			//Ëæ»úÉú³É³õÊ¼Êı¾İµÄÎ»ÖÃ
+			ScoreJLabel.setText("æ¸¸æˆåˆ†æ•°ï¼š "+score);
+			//éšæœºç”Ÿæˆåˆå§‹æ•°æ®çš„ä½ç½®
 			int x1 = random.nextInt(4);
 			int x2 = random.nextInt(4);
 			int y1 = random.nextInt(4);
@@ -70,31 +68,31 @@ public class GameListener extends KeyAdapter implements ActionListener {
 				y1 = random.nextInt(4);
 				y2 = random.nextInt(4);
 			}
-			//Ëæ»ú³õÊ¼µÄÖµ
+			//éšæœºåˆå§‹çš„å€¼
 			int value1 = random.nextInt(2)*2+2;
 			int value2 = random.nextInt(2)*2+2;
 			
 			gameInfo[y1][x1] = value1;
 			gameInfo[y2][x2] = value2;
-			//»æÖÆÍ¼ĞÎ
+			//ç»˜åˆ¶å›¾å½¢
 			client.paint(client.getGraphics());
 					
 		}
 		else if (e.getSource()==about) {
 			JOptionPane.showMessageDialog(client, "GAME MESSAGE\n"
-					+ "       ·ğÏµÂëÅ©×é\n"
-					+ "    ¿ª·¢Õß£ºÕÅÈÙñ´ ¡¢Ò¦½õÌÎ¡¢ÁÎîøçù¡¢¶­½úÓÓ¡¢Â½Ó¾ÇÅ\n"
+					+ "       ä½›ç³»ç å†œç»„\n"
+					+ "    å¼€å‘è€…ï¼šå¼ è£ç¿Š ã€å§šé”¦æ¶›ã€å»–é“ ç¦ã€è‘£æ™‹ä½‘ã€é™†æ³³æ¡¥\n"
 					
 					
-					+"ÉÏÏÂ×óÓÒÎªÒÆ¶¯·½Ïò¼ü\n"
-					+ " ÈôÓÎÏ·³öÏÖÁË2048Êı×ÖÔòÓÎÏ·È¡µÃÊ¤Àû\n"
-					+ " ×£ÄúÓÎÏ·Óä¿ì");
+					+"ä¸Šä¸‹å·¦å³ä¸ºç§»åŠ¨æ–¹å‘é”®\n"
+					+ " è‹¥æ¸¸æˆå‡ºç°äº†2048æ•°å­—åˆ™æ¸¸æˆå–å¾—èƒœåˆ©\n"
+					+ " ç¥æ‚¨æ¸¸æˆæ„‰å¿«");
 		}
 		else if (e.getSource()==back&&hasBack==false) {
 			hasBack = true;
 			score = backScore;
-			ScoreJLabel.setText("·ÖÊı£º "+score);
-			//Êı×éµÄ¸´ÖÆÎŞ·¨Ö±½ÓÊ¹ÓÃ¶şÎ¬Êı×é ÎŞ·¨±æ±ğ
+			ScoreJLabel.setText("åˆ†æ•°ï¼š "+score);
+			//æ•°ç»„çš„å¤åˆ¶æ— æ³•ç›´æ¥ä½¿ç”¨äºŒç»´æ•°ç»„ æ— æ³•è¾¨åˆ«
 			for (int i = 0; i < backUp.length; i++) {
 				gameInfo[i] = backUp[i].clone(); 
 			}
@@ -109,36 +107,36 @@ public class GameListener extends KeyAdapter implements ActionListener {
 			}
 			
 		}
-		System.out.println("OK ³É¹¦");
+		System.out.println("OK æˆåŠŸ");
 	
 	}
 	
 
 	public void keyPressed(KeyEvent e) {
 		
-		int NumCounter = 0;	//Í³¼ÆÊı¾İ¸öÊı£¬ÊÇ·ñÂúÁË
-		int NumNearCounter = 0;	//Í³¼ÆÏàÁÚ¸ñ×ÓÏàÍ¬µÄÊı×Ö¸öÊı¡£
+		int NumCounter = 0;	//ç»Ÿè®¡æ•°æ®ä¸ªæ•°ï¼Œæ˜¯å¦æ»¡äº†
+		int NumNearCounter = 0;	//ç»Ÿè®¡ç›¸é‚»æ ¼å­ç›¸åŒçš„æ•°å­—ä¸ªæ•°ã€‚
 		
 		hasBack = false;
-		//±¸·İ·ÖÊı
+		//å¤‡ä»½åˆ†æ•°
 		if (backUp != null || backUp.length != 0) {
 			backScore = score;
 			
 		}
-		//±¸·İÓÎÏ·Êı×é
+		//å¤‡ä»½æ¸¸æˆæ•°ç»„
 		for (int i = 0; i < gameInfo.length; i++) {
 			backUp[i] = gameInfo[i].clone();
 		}
-		//ÔÚÃ»ÓĞÓ®µÃÇé¿öÏÂ ÅĞ¶ÏÄÄ¸ö²Ù×÷
+		//åœ¨æ²¡æœ‰èµ¢å¾—æƒ…å†µä¸‹ åˆ¤æ–­å“ªä¸ªæ“ä½œ
 		if (!hasWin) {
 			switch (e.getKeyCode()) {
-			case KeyEvent.VK_UP:	//ÏòÉÏ
+			case KeyEvent.VK_UP:	//å‘ä¸Š
 				MoveSound(hasSound);
-				//ÒÆ¶¯ÔÚÒ»Æğ
+				//ç§»åŠ¨åœ¨ä¸€èµ·
 				moveUp();
-				//ÔÚÒÆ¶¯µÄ·½ÏòºÏ²¢ÏàÍ¬µÄ¿ì ĞŞ¸Ä·ÖÊı
-				for(int i =0 ;i<gameInfo[0].length;i++){ //ºáÏò
-					for (int j = 0; j < gameInfo.length; j++) { //×İÏò
+				//åœ¨ç§»åŠ¨çš„æ–¹å‘åˆå¹¶ç›¸åŒçš„å¿« ä¿®æ”¹åˆ†æ•°
+				for(int i =0 ;i<gameInfo[0].length;i++){ //æ¨ªå‘
+					for (int j = 0; j < gameInfo.length; j++) { //çºµå‘
 							if (j+1<gameInfo.length&&(gameInfo[j][i]!=0||gameInfo[j+1][i]!=0)&&gameInfo[j][i]==gameInfo[j+1][i]) {
 								
 									MergeSound(hasSound);
@@ -158,11 +156,11 @@ public class GameListener extends KeyAdapter implements ActionListener {
 				moveUp();
 				break;
 				
-			case KeyEvent.VK_RIGHT://ÏòÓÒ
+			case KeyEvent.VK_RIGHT://å‘å³
 				MoveSound(hasSound);
 				moveRight();
-				for(int j =gameInfo.length-1 ;j>=0;j--){//Êı×éÀïÓĞ¶àÉÙ¸öÊı×é
-					for(int i =gameInfo[0].length-1 ;i>=0;i--){ //Ã¿Ò»¸öÊı×éÀïÃæµÄÊı×éµÄ³¤¶È
+				for(int j =gameInfo.length-1 ;j>=0;j--){//æ•°ç»„é‡Œæœ‰å¤šå°‘ä¸ªæ•°ç»„
+					for(int i =gameInfo[0].length-1 ;i>=0;i--){ //æ¯ä¸€ä¸ªæ•°ç»„é‡Œé¢çš„æ•°ç»„çš„é•¿åº¦
 						if (i+1<gameInfo.length&&gameInfo[j][i]!=0&&gameInfo[j][i]==gameInfo[j][i+1]) {
 							
 								MergeSound(hasSound);
@@ -179,7 +177,7 @@ public class GameListener extends KeyAdapter implements ActionListener {
 				}
 				moveRight();
 				break;
-			case KeyEvent.VK_LEFT:	//Ïò×ó
+			case KeyEvent.VK_LEFT:	//å‘å·¦
 				MoveSound(hasSound);
 				moveLeft();
 				
@@ -207,8 +205,8 @@ public class GameListener extends KeyAdapter implements ActionListener {
 				MoveSound(hasSound);
 				moveDown();
 				
-				for (int i = gameInfo[0].length-1; i >=0; i--) {//ºáÏò
-					for (int j = gameInfo.length-1; j >=0; j--) {//×İÏò
+				for (int i = gameInfo[0].length-1; i >=0; i--) {//æ¨ªå‘
+					for (int j = gameInfo.length-1; j >=0; j--) {//çºµå‘
 						if (j+1<gameInfo[0].length&&(gameInfo[j][i]==gameInfo[j+1][i])&&gameInfo[j][i]!=0) {
 							MergeSound(hasSound);
 							
@@ -227,7 +225,7 @@ public class GameListener extends KeyAdapter implements ActionListener {
 				moveDown();
 				break;
 				}
-			//²é¿´ÏàÁÚµÄ¿ìÓĞ¶àÉÙÏàµÈ
+			//æŸ¥çœ‹ç›¸é‚»çš„å¿«æœ‰å¤šå°‘ç›¸ç­‰
 			for (int i = 0; i < gameInfo.length-1; i++) {
 				for (int j = 0; j < gameInfo[0].length-1; j++) {
 					if (gameInfo[i][j]==gameInfo[i][j+1]&&gameInfo[i][j]!=0) {
@@ -245,7 +243,7 @@ public class GameListener extends KeyAdapter implements ActionListener {
 					}
 				}
 			}
-			//¼ÇÂ¼µ±Ç°ÒÑ¾­ÓĞ¶àÉÙ¿éÒÑ¾­Ê¹ÓÃ
+			//è®°å½•å½“å‰å·²ç»æœ‰å¤šå°‘å—å·²ç»ä½¿ç”¨
 			for (int i = 0; i < gameInfo.length; i++) {
 				for (int j = 0; j < gameInfo[0].length; j++) {
 					if (gameInfo[i][j]!=0) {
@@ -253,9 +251,9 @@ public class GameListener extends KeyAdapter implements ActionListener {
 					}
 				}
 			}
-			//ÔÚÓĞÒÆ¶¯µÄÇé¿öÏÂĞŞ¸Ä·ÖÊı ²¢²úÉúĞÂµÄ·½¿é
+			//åœ¨æœ‰ç§»åŠ¨çš„æƒ…å†µä¸‹ä¿®æ”¹åˆ†æ•° å¹¶äº§ç”Ÿæ–°çš„æ–¹å—
 			if (hasMove) {
-				ScoreJLabel.setText("·ÖÊı: "+score);
+				ScoreJLabel.setText("åˆ†æ•°: "+score);
 				int x1 = random.nextInt(4);
 				int y1 = random.nextInt(4);
 				while(gameInfo[y1][x1]!=0){
@@ -267,17 +265,17 @@ public class GameListener extends KeyAdapter implements ActionListener {
 				gameInfo[y1][x1] = value1;
 				hasMove = false;
 			}
-			//ÊÇ·ñÒÑ¾­Ê¤Àû
+			//æ˜¯å¦å·²ç»èƒœåˆ©
 			if (hasWin) {
 				client.paint(client.getGraphics());
-				JOptionPane.showMessageDialog(client, "¹§Ï²Äú»ñµÃÊ¤Àû! \n"
-						+ "ÄúµÄ×îÖÕ·ÖÊıÎª: "+score);
+				JOptionPane.showMessageDialog(client, "æ­å–œæ‚¨è·å¾—èƒœåˆ©! \n"
+						+ "æ‚¨çš„æœ€ç»ˆåˆ†æ•°ä¸º: "+score);
 			}
-			//ÊÇ·ñÒÑ¾­Ê§°Ü 
+			//æ˜¯å¦å·²ç»å¤±è´¥ 
 			if (NumCounter==16&&NumNearCounter==0) {
-				JOptionPane.showMessageDialog(client, "ºÜ±§Ç¸ÄúÎŞ·¨ÔÙ½øĞĞ×éºÏÁË\n"
-						+ "Äú¿ÉÒÔÑ¡ÔñºóÍËÒ»²½»òÕßÖØĞÂ¿ªÊ¼\n"
-						+ "¼ÓÓÍ£¡ÄúÒ»¶¨¿ÉÒÔÊ¤ÀûµÄ£¡");
+				JOptionPane.showMessageDialog(client, "å¾ˆæŠ±æ­‰æ‚¨æ— æ³•å†è¿›è¡Œç»„åˆäº†\n"
+						+ "æ‚¨å¯ä»¥é€‰æ‹©åé€€ä¸€æ­¥æˆ–è€…é‡æ–°å¼€å§‹\n"
+						+ "åŠ æ²¹ï¼æ‚¨ä¸€å®šå¯ä»¥èƒœåˆ©çš„ï¼");
 			}
 			
 			client.paint(client.getGraphics());
@@ -286,7 +284,7 @@ public class GameListener extends KeyAdapter implements ActionListener {
 		}
 	
 	
-	//¸ù¾İÊÇ·ñ¹´Ñ¡¾²Òô ¿ªÆôÉùÒôÏß³Ì
+	//æ ¹æ®æ˜¯å¦å‹¾é€‰é™éŸ³ å¼€å¯å£°éŸ³çº¿ç¨‹
 	public void MoveSound(boolean hasSound){
 		if (hasSound == true) {
 			new SetSound("move.wav").start();
@@ -299,14 +297,14 @@ public class GameListener extends KeyAdapter implements ActionListener {
 		}
 	}
 	
-	//ÏòÉÏ²¹Æë¿ÕÎ»
+	//å‘ä¸Šè¡¥é½ç©ºä½
 	public void moveUp(){
-		for(int i =0 ;i<gameInfo[0].length;i++){//ºáÏò
-			for (int j = 0; j < gameInfo.length; j++) { //×İÏò
+		for(int i =0 ;i<gameInfo[0].length;i++){//æ¨ªå‘
+			for (int j = 0; j < gameInfo.length; j++) { //çºµå‘
 					if (gameInfo[j][i]!=0) {
 					int tmp = gameInfo[j][i];
 					int num = j-1;
-					//ÏÈÑ­»·ÉÏÒÆµ½Ò»Æğ
+					//å…ˆå¾ªç¯ä¸Šç§»åˆ°ä¸€èµ·
 					while (num >= 0 && gameInfo[num][i]==0){
 						gameInfo[num][i] = tmp;
 						gameInfo[num+1][i] = 0;
@@ -317,14 +315,14 @@ public class GameListener extends KeyAdapter implements ActionListener {
 			}
 		}
 	}
-	//ÏòÏÂÒÆ¶¯²¹Æë¿ÕÎ» ²»ºÏ²¢
+	//å‘ä¸‹ç§»åŠ¨è¡¥é½ç©ºä½ ä¸åˆå¹¶
 	public void moveDown(){
 		for(int i =gameInfo[0].length-1 ;i>=0;i--){
 			for(int j =gameInfo.length-1 ;j>=0;j--){
 				if (gameInfo[j][i]!=0) {
 					int tmp = gameInfo[j][i];
 					int num = j+1;
-					//ÏÈÑ­»·ÏòÏÂÒÆµ½Ò»Æğ
+					//å…ˆå¾ªç¯å‘ä¸‹ç§»åˆ°ä¸€èµ·
 					while (num < gameInfo.length && gameInfo[num][i]==0){
 						gameInfo[num][i] = tmp;
 						gameInfo[num-1][i] = 0;
@@ -336,11 +334,11 @@ public class GameListener extends KeyAdapter implements ActionListener {
 		}
 	}
 	/**
-	 * Ïò×óÒÆ¶¯²¹Æë¿ÕÎ» ²»ºÏ²¢
+	 * å‘å·¦ç§»åŠ¨è¡¥é½ç©ºä½ ä¸åˆå¹¶
 	 */
 	public void moveLeft(){
-		for(int i =0 ;i<gameInfo[0].length;i++){//¸ß¶È
-			for (int j = 0; j < gameInfo.length; j++) {//¿í¶È
+		for(int i =0 ;i<gameInfo[0].length;i++){//é«˜åº¦
+			for (int j = 0; j < gameInfo.length; j++) {//å®½åº¦
 					if (gameInfo[i][j]!=0) {
 					int tmp = gameInfo[i][j];
 					int num = j-1;
@@ -355,14 +353,14 @@ public class GameListener extends KeyAdapter implements ActionListener {
 			}
 		}
 	}
-	//ÏòÓÒÒÆ¶¯²¹Æë¿ÕÎ» ²»ºÏ²¢
+	//å‘å³ç§»åŠ¨è¡¥é½ç©ºä½ ä¸åˆå¹¶
 	public void moveRight(){
 		for(int i =gameInfo.length-1 ;i>=0;i--){
 			for(int j =gameInfo[0].length-1 ;j>=0;j--){
 				if (gameInfo[i][j]!=0) {
 					int tmp = gameInfo[i][j];
 					int num = j+1;
-					//ÏÈÑ­»·ÏòÏÂÒÆµ½Ò»Æğ
+					//å…ˆå¾ªç¯å‘ä¸‹ç§»åˆ°ä¸€èµ·
 					while (num < gameInfo.length && gameInfo[i][num]==0){
 						gameInfo[i][num] = tmp;
 						gameInfo[i][num-1] = 0;
